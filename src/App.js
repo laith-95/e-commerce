@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// components
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+
+class App extends Component {
+  state = {
+    products: [],
+    cart: [],
+  };
+
+  componentDidMount() {
+    const fetchData = async () => {
+      try {
+        let data = await fetch("https://fakestoreapi.com/products");
+        data = await data.json();
+
+        this.setState({
+          products: data,
+        });
+      } catch (error) {
+        console.log("fetch error = ", error);
+      }
+    };
+
+    fetchData();
+  }
+
+  render() {
+    return (
+      <>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+            <Route path="*">
+              <h1>Error 404 !</h1>
+            </Route>
+          </Switch>
+        </Router>
+      </>
+    );
+  }
 }
 
 export default App;
