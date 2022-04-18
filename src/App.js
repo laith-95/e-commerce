@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
 
 // components
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
   state = {
@@ -32,6 +34,8 @@ class App extends Component {
     return (
       <>
         <Router>
+          <Navbar />
+
           <Switch>
             <Route exact path="/">
               <Home />

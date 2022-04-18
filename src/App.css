@@ -1,0 +1,33 @@
+/* general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 5px;
+}
+a {
+  text-decoration: none;
+}
+
+/* start navbar */
+.navbar {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .logo {
+  font-weight: bold;
+  font-size: 25px;
+  color: #375f38;
+}
+.navbar .handbag-icon {
+  font-size: 25px;
+  color: #375f38;
+}
+/* end navbar */
